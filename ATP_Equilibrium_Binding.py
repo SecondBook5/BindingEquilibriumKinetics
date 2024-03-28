@@ -62,9 +62,11 @@ params, _ = curve_fit(binding_equation, x, y, p0=[b0[0], a0[0], k0])
 kFit = params[2]
 
 
-# Plot the fit
+# Plot the fit including the saturation point
 plt.figure()
 plt.plot(x, y, marker='o', linestyle='', label='Data')
+plt.plot(saturating_concentration, fluorescence_at_saturation,
+         'ro', markersize=10, label='Potential Saturation Point')
 plt.plot(x, binding_equation(x, *params), 'r-', label='Fit')
 plt.xlabel('[ATP](nM)', fontsize=12)
 plt.ylabel('Fluorescence (au)', fontsize=12)
@@ -77,5 +79,8 @@ plt.gca().set_xticklabels(['0', '50,000', '100,000', '150,000'])
 
 # Display the equilibrium dissociation constant (KD)
 print(f'Equilibrium Dissociation Constant (KD): {kFit:.4f}')
+
+# Save the plot
+plt.savefig('ATPBindingCurve.png')
 
 plt.show()

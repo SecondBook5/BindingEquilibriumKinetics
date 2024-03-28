@@ -40,9 +40,12 @@ kFit = params[0]
 plt.figure()
 plt.plot(x, y, 'bo', label='Data')
 plt.plot(x, binding_equation(x, kFit), 'r-', label='Fit')
+plt.title('Imatinib Binding Curve')
 plt.xlabel('nanomolar [nM]')
 plt.ylabel('fraction bound')
 plt.legend()
+
+plt.savefig('ImatinibBindingCurve')
 plt.show()
 
 # Display the equilibrium dissociation constant (KD)

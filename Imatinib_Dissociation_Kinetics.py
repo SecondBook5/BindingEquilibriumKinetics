@@ -56,8 +56,12 @@ params, _ = curve_fit(dissociation_equation, x, y, p0=[a0, k0, b0])
 plt.figure()
 plt.plot(x, y, marker='o', linestyle='', label='Data')
 plt.plot(x, dissociation_equation(x, *params), 'r-', label='Fit')
+plt.title('BCR-ABL1/Imatinib Dissociation Curve')
 plt.xlabel('time (seconds)')
 plt.ylabel('fluorescence (au)')
 plt.legend()
+
+# Save the plot
+plt.savefig('ImatinibDissociationCurve.png')
 
 plt.show()
